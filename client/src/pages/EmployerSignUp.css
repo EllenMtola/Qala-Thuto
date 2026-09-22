@@ -1,0 +1,599 @@
+/* =================================
+   EMPLOYER SIGN UP
+================================= */
+
+.employer-signup-page {
+  width: 100%;
+  color: #082f5b;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.employer-signup-hero {
+  min-height: 390px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 80px 24px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    120deg,
+    #173f70 0%,
+    #008b8b 100%
+  );
+}
+
+.employer-signup-hero-content {
+  max-width: 850px;
+}
+
+.employer-signup-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  color: #ffc43d;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.employer-signup-hero h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: clamp(45px, 6vw, 70px);
+  line-height: 1.08;
+  font-weight: 800;
+}
+
+.employer-signup-hero h1 span {
+  color: #ffc43d;
+}
+
+.employer-signup-hero p {
+  max-width: 700px;
+
+  margin: 25px auto 0;
+
+  color: white;
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+/* =================================
+   MAIN SECTION
+================================= */
+
+.employer-signup-section {
+  padding: 100px 0;
+
+  background: #f5f8fa;
+}
+
+.employer-signup-container {
+  width: min(1100px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 0.75fr 1.25fr;
+
+  gap: 70px;
+
+  align-items: start;
+}
+
+
+/* =================================
+   LEFT CONTENT
+================================= */
+
+.employer-signup-intro {
+  padding-top: 20px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 16px;
+
+  color: #008b8b;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.employer-signup-intro h2 {
+  margin: 0 0 22px;
+
+  color: #082f5b;
+
+  font-size: clamp(38px, 5vw, 50px);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.employer-signup-intro h2 span {
+  color: #008b8b;
+}
+
+.employer-signup-intro > p {
+  margin: 0;
+
+  color: #52677d;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* =================================
+   BENEFITS
+================================= */
+
+.signup-benefits {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 28px;
+
+  margin-top: 45px;
+}
+
+.signup-benefit {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 17px;
+}
+
+.signup-benefit-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff3ca;
+
+  font-size: 21px;
+}
+
+.signup-benefit h3 {
+  margin: 2px 0 5px;
+
+  color: #082f5b;
+
+  font-size: 17px;
+}
+
+.signup-benefit p {
+  margin: 0;
+
+  color: #52677d;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =================================
+   FORM CARD
+================================= */
+
+.employer-signup-card {
+  padding: 42px;
+
+  background: white;
+
+  border: 1px solid #e0e9ed;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 15px 45px rgba(8, 47, 91, 0.08);
+}
+
+.signup-card-header {
+  margin-bottom: 35px;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid #e8eef1;
+}
+
+.signup-card-header h2 {
+  margin: 0 0 8px;
+
+  color: #082f5b;
+
+  font-size: 28px;
+}
+
+.signup-card-header p {
+  margin: 0;
+
+  color: #52677d;
+
+  font-size: 15px;
+}
+
+
+/* =================================
+   FORM SECTION HEADERS
+================================= */
+
+.form-section-title {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  margin: 10px 0 25px;
+}
+
+.form-section-title > span {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffc43d;
+
+  color: #082f5b;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.form-section-title h3 {
+  margin: 3px 0 3px;
+
+  color: #082f5b;
+
+  font-size: 18px;
+}
+
+.form-section-title p {
+  margin: 0;
+
+  color: #80909c;
+
+  font-size: 13px;
+}
+
+.account-section-title {
+  margin-top: 38px;
+}
+
+
+/* =================================
+   FORM
+================================= */
+
+.signup-form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+}
+
+.signup-form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+.signup-form-group label {
+  margin-bottom: 8px;
+
+  color: #082f5b;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.signup-form-group input,
+.signup-form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 14px 15px;
+
+  border: 1px solid #d7e1e6;
+
+  border-radius: 9px;
+
+  background: #fbfcfd;
+
+  color: #082f5b;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.signup-form-group input:focus,
+.signup-form-group textarea:focus {
+  border-color: #008b8b;
+
+  box-shadow:
+    0 0 0 3px rgba(0, 139, 139, 0.1);
+}
+
+.signup-form-group input::placeholder,
+.signup-form-group textarea::placeholder {
+  color: #9aa9b5;
+}
+
+.signup-form-group textarea {
+  resize: vertical;
+
+  min-height: 130px;
+}
+
+.signup-form-group small {
+  margin-top: 6px;
+
+  color: #8997a2;
+
+  font-size: 12px;
+}
+
+
+/* =================================
+   MESSAGE
+================================= */
+
+.signup-message {
+  margin: 10px 0 20px;
+
+  padding: 14px 16px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+.signup-message.success {
+  background: #e7f7f1;
+
+  border: 1px solid #b7e5d2;
+
+  color: #176b4a;
+}
+
+.signup-message.error {
+  background: #fff0f0;
+
+  border: 1px solid #f1c5c5;
+
+  color: #a03333;
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+.employer-signup-button {
+  width: 100%;
+
+  padding: 16px 25px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #ffc43d;
+
+  color: #082f5b;
+
+  font-family: inherit;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.employer-signup-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  background: #f8b928;
+}
+
+.employer-signup-button:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =================================
+   LINKS
+================================= */
+
+.signup-links {
+  margin-top: 25px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #e8eef1;
+
+  text-align: center;
+}
+
+.signup-links p {
+  margin: 8px 0;
+
+  color: #52677d;
+
+  font-size: 14px;
+}
+
+.signup-links a {
+  color: #008b8b;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.signup-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* =================================
+   BOTTOM CTA
+================================= */
+
+.employer-signup-cta {
+  padding: 90px 24px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    120deg,
+    #173f70 0%,
+    #008b8b 100%
+  );
+}
+
+.employer-signup-cta > div {
+  max-width: 800px;
+
+  margin: auto;
+}
+
+.employer-signup-cta h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: clamp(35px, 5vw, 52px);
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.employer-signup-cta h2 span {
+  color: #ffc43d;
+}
+
+.employer-signup-cta p {
+  max-width: 650px;
+
+  margin: 22px auto 0;
+
+  color: white;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+
+  .employer-signup-container {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .employer-signup-intro {
+    padding-top: 0;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .employer-signup-container {
+    width: min(100% - 32px, 700px);
+  }
+
+  .employer-signup-section {
+    padding: 70px 0;
+  }
+
+  .employer-signup-hero {
+    min-height: 350px;
+
+    padding: 70px 20px;
+  }
+
+  .employer-signup-hero h1 {
+    font-size: 44px;
+  }
+
+  .employer-signup-hero p {
+    font-size: 16px;
+  }
+
+  .employer-signup-card {
+    padding: 28px 22px;
+  }
+
+  .signup-form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .employer-signup-cta {
+    padding: 70px 20px;
+  }
+}

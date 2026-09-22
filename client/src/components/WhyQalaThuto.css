@@ -1,0 +1,147 @@
+/* =========================
+   WHY QALA THUTO
+   ========================= */
+
+#why-qala-thuto {
+  padding: 90px 8%;
+  background-color: #f7f9fa;
+}
+
+.why-header {
+  max-width: 700px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+#why-qala-thuto .section-label {
+  margin-bottom: 15px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+
+  color: #008f87;
+}
+
+.why-header h2 {
+  margin: 0 0 20px;
+
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 800;
+
+  color: #123b6d;
+}
+
+.why-header > p:not(.section-label) {
+  max-width: 620px;
+  margin: 0 auto;
+
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: #69716b;
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.why-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+.why-card {
+  padding: 35px 30px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e3e8eb;
+  border-radius: 18px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 15px 35px rgba(18, 59, 109, 0.10);
+}
+
+.why-icon {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  margin-bottom: 22px;
+
+  border-radius: 50%;
+
+  background-color: #f4c542;
+
+  color: #123b6d;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.why-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  color: #123b6d;
+}
+
+.why-card p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #69716b;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  #why-qala-thuto {
+    padding: 70px 6%;
+  }
+
+  .why-header {
+    margin-bottom: 40px;
+  }
+
+  .why-header h2 {
+    font-size: 38px;
+  }
+
+  .why-header > p:not(.section-label) {
+    font-size: 16px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-card {
+    padding: 30px 25px;
+  }
+}

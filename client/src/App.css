@@ -1,0 +1,358 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+nav h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #111827;
+}
+
+nav div {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #374151;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #111111;
+}
+
+nav button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #111827;
+  color: white;
+  font-size: 15px;
+  transition: background-color 0.2s ease;
+}
+
+nav button:hover {
+  background-color: #374151;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding: 80px 60px;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.hero-label {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+  margin: 0 0 30px;
+  max-width: 850px;
+  color: #111111;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 750px;
+  margin-bottom: 20px;
+  color: #4b5563;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.hero-buttons button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.hero-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  background-color: white;
+  border: 1px solid #1f2937 !important;
+  color: #1f2937;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+  nav {
+    padding: 18px 25px;
+  }
+
+  nav div {
+    gap: 12px;
+  }
+
+  .hero {
+    padding: 60px 30px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav div {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 50px 25px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   QALA THUTO HERO
+   ========================= */
+
+.hero {
+  min-height: 520px;
+  background: linear-gradient(
+    135deg,
+    #123b6d 0%,
+    #0d5575 55%,
+    #008f87 100%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 70px 30px;
+
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.hero-label {
+  color: #f4c542;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  color: #ffffff;
+
+  font-size: 64px;
+  line-height: 1.05;
+
+  margin: 0 0 25px;
+
+  font-weight: 800;
+}
+
+.hero h1 span {
+  display: block;
+  color: #f4c542;
+}
+
+.hero-description {
+  max-width: 680px;
+  margin: 0 auto 35px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  display: inline-block;
+
+  padding: 14px 28px;
+
+  border-radius: 30px;
+
+  background-color: #f4c542;
+
+  color: #123b6d;
+
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  transition: all 0.2s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+
+  background-color: #ffffff;
+}
+
+.secondary-button {
+  background-color: transparent;
+
+  color: #ffffff;
+
+  border: 2px solid #ffffff;
+}
+
+.secondary-button:hover {
+  background-color: #ffffff;
+
+  color: #123b6d;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: 460px;
+
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-label {
+    font-size: 11px;
+
+    letter-spacing: 1.3px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .hero-button {
+    width: 220px;
+
+    text-align: center;
+  }
+}
