@@ -1,5 +1,6 @@
 import "./App.css"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { useEffect } from "react"
 
 import Navbar from "./components/Navbar"
 import Hero from "./components/Hero"
@@ -21,6 +22,16 @@ import SignUp from "./pages/SignUp"
 import EmployerSignUp from "./pages/EmployerSignUp"
 import Login from "./pages/Login"
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function Home() {
   return (
     <>
@@ -34,6 +45,8 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Navbar />
 
       <Routes>
