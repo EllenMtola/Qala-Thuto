@@ -7,14 +7,18 @@ function CandidateProfile() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
 
-  const [fullName, setFullName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [education, setEducation] = useState("")
-  const [field, setField] = useState("")
-  const [skills, setSkills] = useState("")
-  const [careerGoal, setCareerGoal] = useState("")
-  const [cvUrl, setCvUrl] = useState("")
+ const [fullName, setFullName] = useState("")
+const [email, setEmail] = useState("")
+const [phone, setPhone] = useState("")
+const [education, setEducation] = useState("")
+const [studyYear, setStudyYear] = useState("")
+const [field, setField] = useState("")
+const [skills, setSkills] = useState("")
+const [careerGoal, setCareerGoal] = useState("")
+const [cvUrl, setCvUrl] = useState("")
+const [institution, setInstitution] = useState("")
+const [otherInstitution, setOtherInstitution] = useState("")
+const [province, setProvince] = useState("")
 
   useEffect(() => {
     async function loadProfile() {
@@ -44,13 +48,39 @@ function CandidateProfile() {
       console.log("LOADED PROFILE:", data)
 
       setFullName(data.full_name || "")
-      setEmail(data.email || user.email || "")
-      setPhone(data.phone || "")
-      setEducation(data.education || "")
-      setField(data.field_of_study || "")
-      setSkills(data.skills || "")
-      setCareerGoal(data.career_goal || "")
-      setCvUrl(data.cv_url || "")
+setEmail(data.email || user.email || "")
+setPhone(data.phone || "")
+setEducation(data.education || "")
+setStudyYear(data.study_year || "")
+setProvince(data.province || "")
+const standardInstitutions = [
+  "University of Cape Town",
+  "University of Fort Hare",
+  "University of the Free State",
+  "University of KwaZulu-Natal",
+  "University of Limpopo",
+  "North-West University",
+  "University of Pretoria",
+  "Rhodes University",
+  "University of South Africa",
+  "Stellenbosch University",
+  "University of the Western Cape",
+  "University of the Witwatersrand",
+  "University of Zululand",
+]
+
+if (standardInstitutions.includes(data.institution)) {
+  setInstitution(data.institution)
+  setOtherInstitution("")
+} else {
+  setInstitution("Other")
+  setOtherInstitution(data.institution || "")
+}
+
+setField(data.field_of_study || "")
+setSkills(data.skills || "")
+setCareerGoal(data.career_goal || "")
+setCvUrl(data.cv_url || "")
 
       setLoading(false)
     }
@@ -127,16 +157,22 @@ function CandidateProfile() {
     }
 
     const candidate = {
-      user_id: user.id,
-      full_name: formData.get("fullName") as string,
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
-      education: formData.get("education") as string,
-      field_of_study: formData.get("field") as string,
-      skills: formData.get("skills") as string,
-      career_goal: formData.get("careerGoal") as string,
-      cv_url: newCvUrl,
-    }
+  user_id: user.id,
+  full_name: formData.get("fullName") as string,
+  email: formData.get("email") as string,
+  phone: formData.get("phone") as string,
+  education: formData.get("education") as string,
+  study_year: formData.get("studyYear") as string,
+  field_of_study: formData.get("field") as string,
+  skills: formData.get("skills") as string,
+  career_goal: formData.get("careerGoal") as string,
+  cv_url: newCvUrl,
+  institution:
+  formData.get("institution") === "Other"
+    ? (formData.get("otherInstitution") as string)
+    : (formData.get("institution") as string),
+province: formData.get("province") as string,
+}
 
     const { error: databaseError } = await supabase
       .from("candidates")
@@ -382,7 +418,198 @@ function CandidateProfile() {
                       </option>
 
                     </select>
+<div className="profile-form-group">
 
+  <label htmlFor="studyYear">
+    Study Year
+  </label>
+
+  <select
+    id="studyYear"
+    name="studyYear"
+    value={studyYear}
+    onChange={(event) =>
+      setStudyYear(event.target.value)
+    }
+    required
+  >
+    <option value="">
+      Select your study year
+    </option>
+
+    <option value="1st Year">
+      1st Year
+    </option>
+
+    <option value="2nd Year">
+      2nd Year
+    </option>
+
+    <option value="3rd Year">
+      3rd Year
+    </option>
+
+    <option value="4th Year">
+      4th Year
+    </option>
+
+    <option value="Postgraduate">
+      Postgraduate
+    </option>
+
+    <option value="Graduate / Completed">
+      Graduate / Completed
+    </option>
+  </select>
+
+</div>
+
+<div className="profile-form-group">
+
+  <label htmlFor="institution">
+    Institution
+  </label>
+
+  <div className="profile-form-group">
+  
+  <select
+    id="institution"
+    name="institution"
+    value={institution}
+    onChange={(event) => setInstitution(event.target.value)}
+    required
+  >
+    <option value="">
+      Select your institution
+    </option>
+
+    <option value="University of Cape Town">
+      University of Cape Town (UCT)
+    </option>
+
+    <option value="University of Fort Hare">
+      University of Fort Hare (UFH)
+    </option>
+
+    <option value="University of the Free State">
+      University of the Free State (UFS)
+    </option>
+
+    <option value="University of KwaZulu-Natal">
+      University of KwaZulu-Natal (UKZN)
+    </option>
+
+    <option value="University of Limpopo">
+      University of Limpopo (UL)
+    </option>
+
+    <option value="North-West University">
+      North-West University (NWU)
+    </option>
+
+    <option value="University of Pretoria">
+      University of Pretoria (UP)
+    </option>
+
+    <option value="Rhodes University">
+      Rhodes University (RU)
+    </option>
+
+    <option value="University of South Africa">
+      University of South Africa (UNISA)
+    </option>
+
+    <option value="Stellenbosch University">
+      Stellenbosch University (SU)
+    </option>
+
+    <option value="University of the Western Cape">
+      University of the Western Cape (UWC)
+    </option>
+
+    <option value="University of the Witwatersrand">
+      University of the Witwatersrand (Wits)
+    </option>
+
+    <option value="University of Zululand">
+      University of Zululand (UNIZULU)
+    </option>
+
+    <option value="Other">
+      Other
+    </option>
+  </select>
+
+  {institution === "Other" && (
+   <input
+  type="text"
+  id="otherInstitution"
+  name="otherInstitution"
+  value={otherInstitution}
+  onChange={(event) =>
+    setOtherInstitution(event.target.value)
+  }
+  placeholder="Enter your institution name"
+  required
+/>
+  )}
+</div>
+<div className="profile-form-group">
+  <label htmlFor="province">
+    Province
+  </label>
+
+  <select
+    id="province"
+    name="province"
+    value={province}
+    onChange={(event) =>
+      setProvince(event.target.value)
+    }
+    required
+  >
+    <option value="">
+      Select your province
+    </option>
+
+    <option value="Eastern Cape">
+      Eastern Cape
+    </option>
+
+    <option value="Free State">
+      Free State
+    </option>
+
+    <option value="Gauteng">
+      Gauteng
+    </option>
+
+    <option value="KwaZulu-Natal">
+      KwaZulu-Natal
+    </option>
+
+    <option value="Limpopo">
+      Limpopo
+    </option>
+
+    <option value="Mpumalanga">
+      Mpumalanga
+    </option>
+
+    <option value="Northern Cape">
+      Northern Cape
+    </option>
+
+    <option value="North West">
+      North West
+    </option>
+
+    <option value="Western Cape">
+      Western Cape
+    </option>
+  </select>
+</div>
+</div>
                   </div>
 
 

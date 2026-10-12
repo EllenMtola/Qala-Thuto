@@ -48,52 +48,99 @@ setLoading(false)
 
     loadEmployer()
   }, [])
+
 async function loadApplications(employerId: string) {
   setApplicationsLoading(true)
 
-  const { data, error } = await supabase
-    .from("applications")
-    .select(`
-  id,
-  status,
-  applied_at,
-  opportunity_id,
-  candidate_id,
-  opportunities!inner (
-        id,
-        title,
-        company,
-        employer_id
-      ),
-      candidates!inner (
-        full_name,
-        email,
-        phone,
-        education,
-        field_of_study,
-        skills,
-        career_goal,
-        cv_url
-      )
-    `)
-    .eq("opportunities.employer_id", employerId)
-    .order("applied_at", { ascending: false })
+  try {
+    // First, get applications for this employer's opportunities.
+    const { data: opportunityData, error: opportunityError } =
+      await supabase
+        .from("opportunities")
+        .select("id, title, company, employer_id")
+        .eq("employer_id", employerId)
 
-  if (error) {
-    console.error(
-      "EMPLOYER APPLICATIONS ERROR:",
-      error
+    if (opportunityError) {
+      console.error("EMPLOYER OPPORTUNITIES ERROR:", opportunityError)
+      setApplications([])
+      return
+    }
+
+    const opportunityIds = (opportunityData || []).map(
+      (opportunity) => opportunity.id
     )
 
-    setApplications([])
-    setApplicationsLoading(false)
-    return
-  }
+    if (opportunityIds.length === 0) {
+      setApplications([])
+      return
+    }
 
-  setApplications(data || [])
-  console.log("EMPLOYER APPLICATION DATA:", data)
-  setApplicationsLoading(false)
+    // Get applications connected to those opportunities.
+    const { data: applicationData, error: applicationError } =
+      await supabase
+        .from("applications")
+        .select("id, opportunity_id, candidate_id, status, applied_at")
+        .in("opportunity_id", opportunityIds)
+        .order("applied_at", { ascending: false })
+
+    if (applicationError) {
+      console.error("APPLICATIONS ERROR:", applicationError)
+      setApplications([])
+      return
+    }
+
+    // Load the candidate profiles separately.
+    const candidateIds = [
+      ...new Set(
+        (applicationData || [])
+          .map((application) => application.candidate_id)
+          .filter(Boolean)
+      ),
+    ]
+
+    let candidateData: any[] = []
+
+    if (candidateIds.length > 0) {
+      const { data, error } = await supabase
+        .from("candidates")
+        
+        .select(
+          "id, full_name, email, phone, education, study_year, institution, province, field_of_study, skills, career_goal, cv_url"
+        )
+        .in("id", candidateIds)
+
+      if (error) {
+        console.error("CANDIDATE PROFILES ERROR:", error)
+      } else {
+        candidateData = data || []
+      }
+    }
+
+    // Attach the opportunity and candidate records to each application.
+    const combinedApplications = (applicationData || []).map(
+      (application) => ({
+        ...application,
+        opportunities:
+          (opportunityData || []).find(
+            (opportunity) => opportunity.id === application.opportunity_id
+          ) || null,
+        candidates:
+          candidateData.find(
+            (candidate) => candidate.id === application.candidate_id
+          ) || null,
+      })
+    )
+
+    console.log("COMBINED APPLICATIONS:", combinedApplications)
+    setApplications(combinedApplications)
+  } catch (error) {
+    console.error("UNEXPECTED APPLICATIONS ERROR:", error)
+    setApplications([])
+  } finally {
+    setApplicationsLoading(false)
+  }
 }
+
   async function handleSaveProfile(
     event: React.FormEvent<HTMLFormElement>
   ) {
@@ -432,14 +479,26 @@ async function loadApplications(employerId: string) {
             View Opportunities
           </button>
         </section>
-
-        <section>
+  
+  <section id="employer-applications">
   <h2>Applications</h2>
 
   <p>
     Review candidates who have applied to your
     opportunities.
   </p>
+
+
+<button
+  type="button"
+  onClick={() => {
+    document
+      .getElementById("employer-applications")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }}
+>
+  View Applications
+</button>
 
   {applicationsLoading ? (
     <p>Loading applications...</p>
@@ -453,8 +512,7 @@ async function loadApplications(employerId: string) {
       {applications.map((application) => (
         <article key={application.id}>
           <h3>
-            {application.candidates?.full_name ||
-              "Candidate"}
+            {JSON.stringify(application.candidates)}
           </h3>
 
           <p>
@@ -494,6 +552,24 @@ async function loadApplications(employerId: string) {
               "Not provided"}
           </p>
 
+
+<p>
+  <strong>Study Year:</strong>{" "}
+  {application.candidates?.study_year ||
+    "Not provided"}
+</p>
+
+<p>
+  <strong>Institution:</strong>{" "}
+  {application.candidates?.institution ||
+    "Not provided"}
+</p>
+
+<p>
+  <strong>Province:</strong>{" "}
+  {application.candidates?.province ||
+    "Not provided"}
+</p>
           <p>
             <strong>Field of Study:</strong>{" "}
             {application.candidates?.field_of_study ||

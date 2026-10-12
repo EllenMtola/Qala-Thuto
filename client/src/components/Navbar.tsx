@@ -125,7 +125,13 @@ function Navbar() {
                 ▼
               </span>
             </button>
-
+<Link
+  to="/forums"
+  onClick={closeMenus}
+  className="nav-link"
+>
+  Forums
+</Link>
             {candidateOpen && (
               <div className="dropdown-menu">
 
@@ -173,6 +179,7 @@ function Navbar() {
 
                   <span className="dropdown-right-arrow">→</span>
                 </Link>
+
 
               </div>
             )}

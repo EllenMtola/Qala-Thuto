@@ -13,7 +13,8 @@ import Contact from "./pages/Contact"
 import Employers from "./pages/Employers"
 import Opportunities from "./pages/Opportunities"
 import OpportunityDetails from "./pages/OpportunityDetails"
-
+import Forums from "./pages/Forums"
+import ForumDetails from "./pages/ForumDetails"
 import Candidates from "./pages/Candidates"
 import CandidateProfile from "./pages/CandidateProfile"
 import MyApplications from "./pages/MyApplications"
@@ -85,6 +86,9 @@ function App() {
           path="/my-applications"
           element={<MyApplications />}
         />
+
+       <Route path="/forums" element={<Forums />} />
+<Route path="/forums/:forumId" element={<ForumDetails />} />
       </Routes>
 
       <Footer />
